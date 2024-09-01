@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create User</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<h2>Create User</h2>
+
+<form th:action="@{/create-user}" th:object="${user}" method="post">
+    <label for="username">Username:</label>
+    <input type="text" id="username" th:field="*{username}" required/><br/>
+
+    <label for="firstName">First Name:</label>
+    <input type="text" id="firstName" th:field="*{firstName}" required/><br/>
+
+    <label for="lastName">Last Name:</label>
+    <input type="text" id="lastName" th:field="*{lastName}" required/><br/>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" th:field="*{email}" required/><br/>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" th:field="*{credentials[0].value}" required/><br/>
+
+    <input type="hidden" th:field="*{credentials[0].type}" value="password" />
+    <input type="hidden" th:field="*{credentials[0].temporary}" value="false" />
+
+    <label for="enabled">Enabled:</label>
+    <input type="checkbox" id="enabled" th:field="*{enabled}"/><br/>
+
+    <label for="emailVerified">Email Verified:</label>
+    <input type="checkbox" id="emailVerified" th:field="*{emailVerified}"/><br/>
+
+    <input type="submit" value="Create User"/>
+</form>
+</body>
+</html>
