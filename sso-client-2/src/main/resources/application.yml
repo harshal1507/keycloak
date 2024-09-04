@@ -1,4 +1,7 @@
 spring:
+  application:
+    name: sso-client-2
+
   security:
     oauth2:
       client:
@@ -6,9 +9,9 @@ spring:
           custom:
             client-id: sso-client-2
             client-secret: CuRYID5HNS9XKWDLuekmCVXkjRpmeSNV
-            scope: email
+            scope: read,write,openid
             authorization-grant-type: authorization_code
-            redirect-uri: http://localhost:8084/ui-two/login/oauth2/code/custom
+            redirect-uri: http://localhost:9001/sso-client-2/*
         provider:
           custom:
             authorization-uri: http://localhost:9081/realms/master/protocol/openid-connect/auth
@@ -16,21 +19,17 @@ spring:
             user-info-uri: http://localhost:9081/realms/master/protocol/openid-connect/userinfo
             jwk-set-uri: http://localhost:9081/realms/master/protocol/openid-connect/certs
             user-name-attribute: preferred_username
+
   thymeleaf:
     cache: false
   cache:
     type: NONE
-    
-server: 
-  port: 8084
-  servlet: 
-    context-path: /ui-two
-    
-logging: 
-  level: 
-    org.springframework: INFO
 
-#resourceserver:
-#  api:
-#    url: http://localhost:8081/sso-resource-server/api/foos/
-      
+server:
+  port: 9001
+  servlet:
+    context-path: /sso-client-2
+
+logging:
+  level:
+    org.springframework: INFO

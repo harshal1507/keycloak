@@ -46,13 +46,27 @@
         a:hover {
             background-color: #0056b3;
         }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .button-container a {
+            flex: 1;
+        }
     </style>
 </head>
 <body>
 <div class="result-container">
     <h2>Result</h2>
     <p th:text="${message}"></p>
-    <a th:href="@{/create-user}">Create another user</a>
+    <div class="button-container">
+        <a th:href="@{/create-user}">Create another user</a>
+        <a th:href="@{/login}">Login</a>
+    </div>
 </div>
 </body>
 </html>

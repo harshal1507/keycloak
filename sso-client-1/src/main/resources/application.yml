@@ -33,3 +33,16 @@ server:
 logging:
   level:
     org.springframework: INFO
+
+keycloak:
+  realm: master
+  domain: localhost:9081
+  adminClientId: admin-cli
+  adminClientSecret: TW5BhUcNK5PbRM0TozfD9CySrxwLbGAG
+  client: authenticationClientId
+  username: admin
+  password: admin@1234
+  tokenURL: http://localhost:9081/realms/master/protocol/openid-connect/token
+  createUserURL: http://${keycloak.domain}/admin/realms/master/users
+  urls:
+    auth: http://${keycloak.domain}
